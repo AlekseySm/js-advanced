@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Loader</title>
+  <link rel="stylesheet" href="css/normalize.css" />
+
+  <script>
+
+    document.addEventListener('DOMContentLoaded', function(){
+        var loader = document.getElementById('loader');
+        loader.classList.add('show');
+    })
+
+    window.addEventListener('load', function(){
+        var loader = document.getElementById('loader');
+        loader.classList.remove('show');
+    });
+  </script>
+  <style>
+      .loader{
+        width: 100vw;
+        height: 100vh;
+        background-color: #eee;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+      }
+      .loader.show{
+        display: flex;
+      }
+      .loader:after{
+        content: '';
+        width: 70px;
+        height: 70px;
+        background-image: url('images/loading.svg');
+        background-repeat: no-repeat;
+        background-size: 70px 70px;
+        background-position: center center;
+        animation: rotate 2s infinite;
+      }
+
+      @keyframes rotate {
+        0%{
+          transform: rotate(0deg);
+        }
+        100%{
+          transform: rotate(360deg);
+        }
+      }
+  </style>
+</head>
+<body>
+  <div class="loader" id="loader"></div>
+  <div class="wrap">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/IjMESxJdWkg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/IjMESxJdWkg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/IjMESxJdWkg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/IjMESxJdWkg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/IjMESxJdWkg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/IjMESxJdWkg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</body>
+</html>

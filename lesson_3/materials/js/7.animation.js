@@ -1,0 +1,20 @@
+function ToggleClass( e ){
+  e.target.classList.toggle('animation');
+}
+
+function transitionAnimation(e){
+  // Сработает для КАЖДОГО анимированого свойства
+  console.log(e);
+  console.log('Animation end', e.propertyName);
+  e.target.classList.add('secondStep');
+  transition.removeEventListener('click', ToggleClass);
+}
+
+var transition = document.getElementById('transition');
+
+transition.addEventListener('click', ToggleClass);
+transition.addEventListener('transitionend', transitionAnimation);
+
+setTimeout( function(){
+  transition.classList.add('animation');
+}, 4000);

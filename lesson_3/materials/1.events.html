@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>JS Events</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="wrap" id="wrap">
+        <h1>Welcome to JS Events</h1>
+        <div class="ButtonsBlock">
+          <h2> Ways to execute </h2>
+          <div>
+            <button onCliCK="CounterAdd(event)"> Click fiers from HTML</button>
+            <button id="fromCode"> Click fiers from code</button>
+            <button id="execution"> Execution </button>
+            <button id="eventObj" data-attr="Text"> Show EventObj </button>
+            <button onclick="console.log( this )"> Context this</button>
+          </div>
+        </div>
+
+        <script src="js/1.events.js"></script>
+    </div>
+  </body>
+</html>
