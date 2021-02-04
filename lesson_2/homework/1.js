@@ -33,8 +33,37 @@
       forEach
       onclick
 
+
       element.onclick = function(event) {
         // do stuff ...
       }
 
   */
+  let btns = document.querySelectorAll('button'),
+      buttonContainer = document.getElementById('buttonContainer'),
+      tabContainer = document.getElementById('tabContainer');
+
+  let singleTab = tabContainer.querySelectorAll('.tab');
+
+  const foreach = (arr, dataset) => {
+      arr.forEach((items, i) => {
+          if(items.dataset.tab === dataset && items.classList.contains('active') != true) {
+              console.log(items.classList.contains('active'));
+              items.classList.toggle('active');
+          } else {
+              items.classList.remove('active');
+          }
+      })
+  }
+
+  const tab = (dataset) => {
+      foreach(btns, dataset);
+      foreach(singleTab, dataset);
+      return false;
+  }
+
+  buttonContainer.addEventListener('click', (e) => {
+      if(e.target.localName != 'header'){
+          tab(e.target.dataset.tab)
+      }
+  })
