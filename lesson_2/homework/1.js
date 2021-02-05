@@ -43,12 +43,15 @@
       buttonContainer = document.getElementById('buttonContainer'),
       tabContainer = document.getElementById('tabContainer');
 
+  let closeAll = document.createElement('button');
+  closeAll.innerText = 'Close All';
+  closeAll.className = 'close-all-tab';
+
   let singleTab = tabContainer.querySelectorAll('.tab');
 
   const foreach = (arr, dataset) => {
       arr.forEach((items, i) => {
           if(items.dataset.tab === dataset && items.classList.contains('active') != true) {
-              console.log(items.classList.contains('active'));
               items.classList.toggle('active');
           } else {
               items.classList.remove('active');
@@ -63,7 +66,19 @@
   }
 
   buttonContainer.addEventListener('click', (e) => {
-      if(e.target.localName != 'header'){
+      if(e.target.localName != 'header' && e.target.classList.contains('close-all-tab') != true ){
           tab(e.target.dataset.tab)
       }
   })
+
+  let hideAllTabs = () => {
+      btns.forEach((btn) => {
+          btn.classList.remove('active');
+      });
+      tabContainer.querySelectorAll('.tab').forEach((tab) => {
+            tab.classList.remove('active');
+      });
+  }
+
+  buttonContainer.append(closeAll);
+  closeAll.addEventListener('click', hideAllTabs);
