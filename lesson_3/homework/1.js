@@ -20,32 +20,45 @@
 
 
 window.addEventListener('load', function(){
-  var OurSliderImages = ['images/cat1.jpg', 'images/cat2.jpg', 'images/cat3.jpg', 'images/cat4.jpg', 'images/cat5.jpg', 'images/cat6.jpg', 'images/cat7.jpg', 'images/cat8.jpg'];
-  var currentPosition = 0;
+  const OurSliderImages = ['images/cat1.jpg', 'images/cat2.jpg', 'images/cat3.jpg', 'images/cat4.jpg', 'images/cat5.jpg', 'images/cat6.jpg', 'images/cat7.jpg', 'images/cat8.jpg'];
+  const slider = document.getElementById('slider');
+  let next = document.getElementById("NextSilde"),
+      prev = document.getElementById("PrevSilde");
+  let currentPosition = 0;
+  let length = OurSliderImages.length;
 
-  let slider = document.getElementById('slider');
-
-  let nextSlie = document.getElementById('NextSilde');
-  let prevSilde = document.getElementById('PrevSilde');
-
-
-  function RenderImage() {
+  const RenderImage = (position) => {
     let newImage = document.createElement('img');
-    newImage.src = OurSliderImages[currentPosition];
+    newImage.src = OurSliderImages[position];
     slider.innerHTML = '';
     slider.append(newImage);
+    setTimeout(() => {
+      newImage.classList.add('active');
+    }, 300)
   }
 
-  function NextSlide() {
-    console.log('next');
-    RenderImage();
-    currentPosition++;
+  let NextSlide = () => {
+    if(currentPosition == length-1){
+      RenderImage(0);
+      currentPosition = 0;
+    } else{
+      RenderImage(currentPosition+1);
+      currentPosition++;
+    }
   }
-  function PrevSlide() {
-    console.log('prev');
-    RenderImage();
-    currentPosition--;
+
+  let PrevSlide = () => {
+    console.log(currentPosition);
+    if (currentPosition == 0) {
+      RenderImage(length - 1);
+      currentPosition = length - 1;
+    } else {
+      RenderImage(currentPosition - 1);
+      currentPosition--;
+    }
   }
-  nextSlie.addEventListener('click', NextSlide);
-  prevSilde.addEventListener('click', PrevSlide);
+
+  RenderImage(0);
+  next.addEventListener("click", NextSlide);
+  prev.addEventListener("click", PrevSlide);
 });
