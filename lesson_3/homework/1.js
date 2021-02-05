@@ -18,5 +18,34 @@
 
 */
 
+
+window.addEventListener('load', function(){
   var OurSliderImages = ['images/cat1.jpg', 'images/cat2.jpg', 'images/cat3.jpg', 'images/cat4.jpg', 'images/cat5.jpg', 'images/cat6.jpg', 'images/cat7.jpg', 'images/cat8.jpg'];
   var currentPosition = 0;
+
+  let slider = document.getElementById('slider');
+
+  let nextSlie = document.getElementById('NextSilde');
+  let prevSilde = document.getElementById('PrevSilde');
+
+
+  function RenderImage() {
+    let newImage = document.createElement('img');
+    newImage.src = OurSliderImages[currentPosition];
+    slider.innerHTML = '';
+    slider.append(newImage);
+  }
+
+  function NextSlide() {
+    console.log('next');
+    RenderImage();
+    currentPosition++;
+  }
+  function PrevSlide() {
+    console.log('prev');
+    RenderImage();
+    currentPosition--;
+  }
+  nextSlie.addEventListener('click', NextSlide);
+  prevSilde.addEventListener('click', PrevSlide);
+});
