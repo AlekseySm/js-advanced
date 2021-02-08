@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Select</title>
+    <script>
+    window.addEventListener("load", function() {
+        var tryIt = document.getElementById("tryit");
+        //
+        tryIt.addEventListener("click", function () {
+            var mySelectlength = document.getElementById("mySelect").length; // Получим количество опций
+            var mySelectValue = document.getElementById("mySelect").value; // Выбранное значение
+            document.getElementById("demo").innerHTML = "количество вариантов выбора - " + mySelectlength + ". Выбранное значени: " + mySelectValue;
+        });
+
+        // #####################################################
+
+        // new Option(text, value, defaultSelected, selected);
+        // text – текст внутри <option>,
+        // value – значение,
+        // defaultSelected – если true, то ставится HTML-атрибут selected,
+        // selected – если true, то элемент <option> будет выбранным.
+
+        var mySelection = document.getElementById('mySelection');
+        var stars = ['Elijah Wood', 'Ian McKellen', 'Orlando Bloom','Ewan McGregor','Liam Neeson', 'Natalie Portman', 'Ewan McGregor', 'Billy Bob Thornton', 'Martin Freeman'];
+        
+        var startOpt = new Option( "Выберите актера", null, true, true);
+            startOpt.disabled = true;
+            console.log(startOpt);
+
+        stars.forEach( function(item, key){
+            var option;
+            if( key === 5 ){
+              option = new Option(item, item, true, true);
+              option.disabled = true;
+            } else {
+              option = new Option(item, item);
+              console.log( option )
+            }
+            mySelection.appendChild(option);
+        });
+  
+        mySelection.appendChild(startOpt);
+
+        // #####################################################
+
+        // function myOption(text, value){
+        //   var myOpt = document.createElement('option');
+        //       myOpt.value = value;
+        //       myOpt.innerText = text;
+        //       return myOpt;
+        // }
+
+        // var opt = new Option('Mytext', 'Myvalue', true, true);
+        //    console.log('Option new:', opt);
+        
+        // var y = myOption('Mytext', 'Myvalue');
+        //     console.log('Option old:', y);
+
+    });
+
+    </script>
+</head>
+<body>
+
+    <h3>A demonstration of how to access a SELECT element</h3>
+
+    <select id="mySelect">
+      <option>Яблоко</option>
+      <option>Груша</option>
+      <option>Банан</option>
+      <option>Панда</option>
+      <option>Яблоко</option>
+      <option>Груша</option>
+      <option>Банан</option>
+      <option>Панда</option>
+    </select>
+
+  <button id="tryit">Пробовать</button>
+
+
+  <select id="mySelection"></select>
+  <p id="demo"></p>
+
+</body>
+</html>

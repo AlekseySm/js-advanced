@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Label</title>
+</head>
+<body>
+    <!-- Клик по вложенному элементу -->
+    <label>
+        <span>Click me to focus input</span>
+        <input id="label_click"/>
+    </label>
+
+    <!-- Клик по не вложенному элементу -->
+    <div>
+      <label for="click_input"> Click here to trigger click  </label>
+      <input id="click_input" placeholder="label test!"/>
+    </div>
+
+    <!-- Загрузка файла -->
+    <label for="file_upload">
+      <img src="https://www.abc.net.au/cm/rimage/10684416-1x1-thumbnail.png?v=6" />
+      <input hidden id="file_upload" type="file">
+    </label>
+
+    <script>
+      /* Делегирование клика */
+      var click_input = document.getElementById('click_input');
+          click_input.addEventListener('click', function(e){
+            e.target.value = 'i was clicked!'
+          })
+
+      var label_click = document.getElementById('label_click');
+          label_click.addEventListener('click', function(){
+            alert('123');
+          })
+
+      // /* Обработка загрузки файла */
+      var file_upload = document.getElementById('file_upload');
+          file_upload.addEventListener('change', function(e){
+            console.log( e );
+          })
+
+
+    </script>
+</body>
+</html>

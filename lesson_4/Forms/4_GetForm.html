@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Forms</title>
+    <script>
+        window.addEventListener("load", function () {
+            var mainForm = document.getElementById('myForm');
+            console.log(mainForm)
+            // получить форму с именем
+            console.log( document.forms ); // Получить форму по индексу
+
+            console.log( 'by name:', document.forms.myFormName.elements );
+            //
+            // var registration = document.getElementById("registration");
+            //     registration.addEventListener("click", function ( event ) {
+            //         event.preventDefault();
+            //         console.log('FORM SUBMITTED!');
+            //         console.log( 'Control colection', document.forms.myFormName.elements);
+            //         var myArrayCollection = Array.from( document.forms.myFormName.elements );
+            //         console.log( 'Array', myArrayCollection );
+            //         myArrayCollection.forEach( function(item){
+            //           if( item.type !== 'submit'){
+            //             console.log( 'name:', item.name, 'value:', item.value );
+            //           }
+            //         });
+                              
+            //     mainForm.elements[0].value = "text";
+            //     mainForm.elements[1].value = "text2";
+            //     mainForm.elements[2].value = "text3";
+            
+            //     // mainForm.elements.v1.value = "text";
+            //     // mainForm.elements.v2.value = "text2";
+            //     // mainForm.elements.v3.value = "text3";
+            // });            
+            
+            mainForm.addEventListener('submit', function(e){
+              e.preventDefault();
+              console.log( 'FORM SUBMIT' )
+                if( document.forms.myFormName.elements.v1.value ===  ''){
+                  //e.preventDefault();
+                  console.log( 'validation failed!');
+                }
+            });
+        });
+
+
+    </script>
+</head>
+<body>
+
+
+    <form name="form2"></form>
+    
+    <form id="myForm" name="myFormName">
+        <label>Возраст
+            <input type="text" value="" name="v2"/>
+        </label>
+        <label>Имя 
+            <input type="text" placeholder="You value" value="" name="v3"/>
+        </label>
+        <label>Фамилия
+            <input type="text" value="" name="v1" />
+        </label>
+        <input type="submit" value="Регистрация" id="registration" />
+        <button id="test_btn"> Test button </button>
+    </form>
+
+    <form name="form1"></form>
+
+</body>
+</html>

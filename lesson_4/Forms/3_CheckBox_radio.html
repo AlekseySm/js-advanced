@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Checboxes and radio</title>
+    <script>
+    window.onload = function () {
+        var input = document.getElementById('myCheckbox');
+        console.log('input.checked', input.checked);
+        console.log('input.getAttribute', input.getAttribute('checked')); // Не надо так :(
+
+        var radio = document.getElementById('myRadio');
+        console.log('radio.checked', radio.checked);
+        console.log('radio.getAttribute', radio.getAttribute('checked')); // Не надо так :(
+    };
+    </script>
+</head>
+<body>
+    <input type="checkbox" id="myCheckbox" >
+    <input type="radio" id="myRadio" >
+    <label id="check">
+        <h2>My Radio</h2>
+        <input type="radio" name="myradio" value="1">
+        <input type="radio" name="myradio" value="2">
+        <input type="radio" name="myradio" value="3">
+    </label>
+
+    <script>
+      function myClick(event){
+        console.log(event.target.value);
+      }
+
+      var check = document.querySelectorAll('#check input[type="radio"]');
+          check.forEach( function( item ){
+              item.addEventListener('click', myClick);
+          })
+    </script>
+
+</body>
+</html>

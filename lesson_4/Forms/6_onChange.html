@@ -1,0 +1,31 @@
+<!-- Событие change происходит при изменении значения элемента формы -->
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Событие onchange</title>
+ </head>
+ <body>
+    <script>
+      // onchange 
+      document.addEventListener('DOMContentLoaded', function(){
+        blur_and_focus.addEventListener('change', function(e){ console.log('change event', e.target.value);})
+        blur_and_focus.addEventListener('blur', function(e){ console.log('blur event', e.target.value);})
+        blur_and_focus.addEventListener('focus', function(e){ console.log('focus event', e.target.value);})
+        blur_and_focus.addEventListener('input', function(e){ console.log('input event', e.target.value);})
+      })
+    </script>
+
+    <input id="blur_and_focus" type="text" placeholder="blur and focus">
+    <input type="button" value="Кнопка">
+
+    <!-- 
+      1. change - срабатывает после потери фокуса и изменения значения целевого элемента
+      2. blur - срабатывает после потери фокуса
+      3. focus - при фокусе на элементе
+      4. input - при вводе значений в инпут
+     -->
+
+
+ </body>
+</html>
