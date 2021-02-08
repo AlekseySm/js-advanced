@@ -47,5 +47,73 @@
         border: 1px solid green;
     }
   </style>
+<script>
+  const Submit = document.getElementById('submit');
+  const myForm = document.getElementById('MyValidateForm');
+
+  const login = myForm.login;
+  const pas1 = myForm.pas1;
+  const pas2 = myForm.pas2;
+
+  let agree_input = document.getElementById('agree');
+  agree_input.addEventListener('click', function(e){
+    if(e.target.checked) {
+      Submit.removeAttribute('disabled');
+      myForm.addEventListener('submit', submitForm)
+    } else {
+      Submit.setAttribute('disabled', true);
+      myForm.removeEventListener('submit', submitForm)
+    }
+  })
+
+  const submitForm = (e) => {
+    e.preventDefault();
+    let valid = false;
+    let arr = [];
+    myForm.querySelectorAll('input').forEach((item) => {
+      item.classList.remove('OK');
+      item.classList.remove('error');
+    })
+    if (login.value == '') {
+      login.classList.add('error');
+      return
+    } else {
+      login.classList.add('OK');
+      arr.push({name:login.value})
+      valid = true;
+    }
+    if (pas1.value == '') {
+      pas1.classList.add('error');
+      return;
+    } else {
+      pas1.classList.add('OK');
+      arr.push({pas1:pas1.value})
+      valid = true;
+    }
+    if (pas2.value == '') {
+      pas2.classList.add('error');
+      return;
+    } else {
+      pas2.classList.add('OK');
+      valid = true;
+    }
+
+    if (pas2.value != pas1.value) {
+      pas2.classList.add('error');
+      return;
+    } else {
+      pas2.classList.add('OK');
+      arr.push({pas2:pas2.value})
+      valid = true;
+    }
+
+    if(valid) {
+      console.log(arr)
+    } else {
+      console.log('no send')
+    }
+  }
+
+</script>
 </body>
 </html>
