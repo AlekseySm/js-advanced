@@ -23,10 +23,28 @@
 
     window.addEventListener("load", function () {
       var myWidth = document.getElementById('myWidth');
+      var myHeigth = document.getElementById('myHeigth');
+      var myRadius = document.getElementById('myRadius');
+      var myMargin = document.getElementById('myMargin');
 
       myWidth.addEventListener('input', function(event){
         console.log( event.target.value );
         result.style.width = event.target.value + 'px';
+      });
+
+      myHeigth.addEventListener('input', function(event){
+        console.log( event.target.value );
+        result.style.height = event.target.value + 'px';
+      });
+
+      myRadius.addEventListener('input', function(event){
+        console.log( event.target.value );
+        result.style.borderRadius = event.target.value + '%';
+      });
+
+      myMargin.addEventListener('input', function(event){
+        console.log( event.target.value );
+        result.style.margin = event.target.value + 'px';
       });
     });
 
@@ -45,9 +63,9 @@
     <form>
       <input type="range" id="myWidth" min="10" max="500" step="10"/>
       <input type="color" id="myColor" min="10" max="500" step="10"/>
-      <input type="range" id="" min="10" max="500" step="10"/>
-      <input type="range" id="" min="10" max="500" step="10"/>
-      <input type="range" id="" min="10" max="500" step="10"/>
+      <input type="range" id="myHeigth" min="10" max="500" step="10"/>
+      <input type="range" id="myRadius" min="0" max="50" step="1"/>
+      <input type="range" id="myMargin" min="1" max="300" step="10"/>
     </form>
 
     <div class="TemplatingResult">
