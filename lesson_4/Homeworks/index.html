@@ -1,0 +1,29 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home work 4</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="main">
+    <form action="" method="post">
+        <input type="text" name="name" id="name" minlength="2" required="true" placeholder="Имя">
+        <input type="email" name="email" id="email" minlength="3" required="true" placeholder="email">
+        <input type="password" name="password" id="pass" maxlength="16" minlength="8" required="true" placeholder="пароль">
+        <input type="number" name="number" id="number" minlength="1" required="true" placeholder="введи число">
+        <input type="text" name="thankyou" id="thankyou" minlength="2" required="true" placeholder="напиши спасибо">
+        <label for="check">
+            <input type="checkbox" id="check" required="true">
+            Согласен на обучение
+        </label>
+
+        <button type="submit">Отправить форму</button>
+    </form>
+    <button id="validBtn">Проверить форму</button>
+</main>
+<script src="Task1.js"></script>
+</body>
+</html>

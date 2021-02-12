@@ -6,15 +6,7 @@
   <title>Событие onchange</title>
  </head>
  <body>
-    <script>
-      // onchange 
-      document.addEventListener('DOMContentLoaded', function(){
-        blur_and_focus.addEventListener('change', function(e){ console.log('change event', e.target.value);})
-        blur_and_focus.addEventListener('blur', function(e){ console.log('blur event', e.target.value);})
-        blur_and_focus.addEventListener('focus', function(e){ console.log('focus event', e.target.value);})
-        blur_and_focus.addEventListener('input', function(e){ console.log('input event', e.target.value);})
-      })
-    </script>
+
 
     <input id="blur_and_focus" type="text" placeholder="blur and focus">
     <input type="button" value="Кнопка">
@@ -26,6 +18,14 @@
       4. input - при вводе значений в инпут
      -->
 
-
+    <script>
+        // onchange
+        //document.addEventListener('DOMContentLoaded', function(){
+            // blur_and_focus.addEventListener('change', function(e){ console.log('change event', e.target.value);})
+            // blur_and_focus.addEventListener('blur', function(e){ console.log('blur event', e.target.value);})
+            // blur_and_focus.addEventListener('focus', function(e){ console.log('focus event', e.target.value);})
+            blur_and_focus.addEventListener('input', function(e){ console.log('input event', e.target.value);})
+        //})
+    </script>
  </body>
 </html>

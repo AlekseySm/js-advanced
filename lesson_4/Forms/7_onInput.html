@@ -8,28 +8,7 @@
   <title>onInput</title>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      var input = document.getElementById("on-input");
-      input.addEventListener("change", function () {  // измените на onchange
-        
-        if( input.value.length < 5){
-          input.style.border = '1px solid red';
-          alert('not enough symbols')
-        } else {
-          input.style.border = '1px solid green';
-        }
-        document.getElementById('result').innerHTML = input.value;
 
-        console.log(input.validity)
-
-        // if ( input.validity.tooShort  ){
-        //   input.setCustomValidity('not enough symbols in your input!');
-        // } else {
-        //   input.setCustomValidity('');
-        // }
-        
-        // console.log( input.value );
-
-      });
     });
 
     /*
@@ -50,7 +29,7 @@
           border: 1px solid red;
         }
     </style>
-    <form>
+    <form id="form">
         Введите дату:
         <input 
           maxlength="10"
@@ -61,6 +40,33 @@
           <br> oninput: <span id="result"></span>
         <button> Submit </button>
     </form>
-  
+    <script>
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+        })
+
+        var input = document.getElementById("on-input");
+        input.addEventListener("onchange", function () {  // измените на onchange
+
+            if( input.value.length < 5){
+                input.style.border = '1px solid red';
+                alert('not enough symbols')
+            } else {
+                input.style.border = '1px solid green';
+            }
+            document.getElementById('result').innerHTML = input.value;
+
+            console.log(input.validity)
+
+            if ( input.validity.tooShort  ){
+              input.setCustomValidity('not enough symbols in your input!');
+            } else {
+              input.setCustomValidity('');
+            }
+
+            console.log( input.value );
+
+        });
+    </script>
 </body>
 </html>
