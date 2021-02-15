@@ -11,7 +11,11 @@
       </header>
       <div id="result"></div>
       <script>
-
+            document.getElementById('ShowDayButton').addEventListener('click', () => {
+                let date = new Date(document.getElementById('MyDateSelector').value);
+                let options = { weekday: 'long'};
+                document.getElementById('result').innerHTML = new Intl.DateTimeFormat('ua-UA', options).format(date);
+            })
           /*
             Создайте функцию, которая по клику на "показать день недели" возвращает день недели для выбранной даты с интута.
             День нужно возвратить в div#result в текстовом формате т.е понедельник, вторник, суббота и т.д

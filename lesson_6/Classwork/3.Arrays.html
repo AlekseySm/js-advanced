@@ -16,7 +16,18 @@
     */
 
     const ITEA_COURSES = ["Курс HTML & CSS", "JavaScript базовый курс", "JavaScript продвинутый курс", "JavaScript Professional", "Angular 2.4 (базовый)", "Angular 2.4 (продвинутый)", "React.js", "React Native", "Node.js", "Vue.js"];
+    const getLengs = (item) => {
+        return item.length
+    }
+    let mapArr = ITEA_COURSES.map(getLengs);
+    console.log(mapArr)
 
+    let Sort = ITEA_COURSES.sort();
+    console.log(Sort);
+
+    const removeItem = item => item;
+    let Find = ITEA_COURSES.filter(removeItem);
+    console.log(Find)
     /*
       Задание 2:
       Написать фильтр массива по:
