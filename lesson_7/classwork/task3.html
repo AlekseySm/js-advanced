@@ -19,10 +19,55 @@
         Каждый метод должен выводить в консоле все поля + имя метода
         WALK:
             console.log(`Hi! My name is ${name}, and Im {age} years old. Im from ${country}, and I like to WALK a lot`)
-        
-
-
 
      -->
+
+<script>
+    class Man {
+        constructor(name, age, country) {
+            this.name = name;
+            this.age = age;
+            this.country = country
+        }
+
+        walk() {
+            console.log(`Hi! My name is ${this.name}, and Im ${this.age} years old. Im from ${this.country}, and I like to WALK a lot`)
+        }
+        eat() {
+            console.log(`Hi! My name is ${this.name}, and Im ${this.age} years old. Im from ${this.country}, and I like to EAT a lot`)
+        }
+        drink() {
+            console.log(`Hi! My name is ${this.name}, and Im ${this.age} years old. Im from ${this.country}, and I like to DRINK a lot`)
+        }
+    }
+
+    let man = new Man('Jony', '38', 'USA');
+    console.log(man.drink());
+    console.log(man.eat());
+    console.log(man.walk());
+
+    class Soldier extends Man{
+        constructor(name, age, country) {
+            super(name, age, country);
+        }
+        shoot() {
+            console.log(`Hi! My name is ${this.name}, and Im ${this.age} years old. Im from ${this.country}, and I like to SHOOT a lot`)
+        }
+    }
+    let soldier = new Soldier('Jony', '38', 'USA');
+    console.log(soldier.shoot());
+
+    class Doctor extends Man{
+        constructor(name, age, country) {
+            super(name, age, country);
+        }
+        cure() {
+            console.log(`Hi! My name is ${this.name}, and Im ${this.age} years old. Im from ${this.country}, and I like to CURE a lot`)
+        }
+    }
+    let doctor = new Doctor('Jony', '38', 'USA');
+    console.log(doctor.cure())
+
+</script>
 </body>
 </html>
