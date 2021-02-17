@@ -31,13 +31,19 @@ window.addEventListener('load', () => {
     function User (name, text, avatar ) {
         this.name = name;
         this.text = text;
-        this.avatar = avatar || 'computer-icons-user-profile-head-ico-download.jpg';
+        if(avatar) {
+            this.avatar = avatar;
+        }
         this.like = 0;
+    }
 
-        this.addLike = () => {
-            this.like++
+    User.prototype = {
+        avatar: 'computer-icons-user-profile-head-ico-download.jpg',
+        addLike: function(){
+            this.like++;
         }
     }
+
 
     const defaultText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco'
 
@@ -45,7 +51,7 @@ window.addEventListener('load', () => {
     let Petya = new User('Petya', defaultText);
     let Karl = new User('Karl', defaultText);
     let Mary = new User('Mary', defaultText, '163-1636340_user-avatar-icon-avatar-transparent-user-icon-png.png');
-
+    console.log(Jony)
     let Users = [];
     Users.push(Jony, Petya, Karl, Mary, new User('Test', 'bla bla bla'));
 
