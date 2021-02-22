@@ -1,3 +1,14 @@
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('http://www.json-generator.com/api/json/get/cgwbLkTxnS?indent=2')
+        .then((res) => {
+            return res.json()
+        }).then((res1) =>{
+           console.log(res1);
+        let item = res1[Math.floor(Math.random()*res1.length)];
+        console.log(item)
+    })
+})
+
 /*
   Задача:
 

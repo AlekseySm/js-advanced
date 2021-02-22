@@ -21,3 +21,27 @@
   -> '{"name" : !"23123", "age": 15, "password": "*****" }'
 
 */
+document.addEventListener('DOMContentLoaded', () => {
+    let form = document.getElementById('form');
+    let data = {};
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        data = {};
+        let input = e.target.querySelectorAll('input');
+        input.forEach((input) => {
+            data[input.name] = input.value;
+        })
+        data = JSON.stringify(data);
+        console.log(data);
+        document.getElementById('parse')[0].value = data;
+    })
+
+    let arr = '{"name" : "23123", "age": "15", "password": "*****" }';
+    document.getElementById('parse')[0].value = arr;
+
+    document.getElementById('parse').addEventListener('submit', (e) => {
+        e.preventDefault();
+        let pars = JSON.parse(e.target[0].value)
+        console.log(pars)
+    })
+})
