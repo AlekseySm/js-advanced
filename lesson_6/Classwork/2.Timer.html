@@ -3,21 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <title>Homework</title>
+    <!--
+        let direction = 1;
+        let counter = 0;
+
+        setInterval(function() {
+            counter += direction;
+
+            if(counter == 0 || counter == 5) direction *= -1;
+        dCounter.innerHTML = counter;
+
+        }, 1000);
+    -->
+    <style>
+        .wrapper{
+            width: 400px;
+            margin: 0 auto;
+        }
+
+        .timer-container{
+            width: 200px;
+            height: 200px;
+            position: relative;
+            border-radius: 50%;
+            background: #fff;
+            border: 1px solid red;
+        }
+
+        .timer-container:after {
+            background: #000;
+            border-radius: 50%;
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 5%;
+            height: 5%;
+            z-index: 10;
+        }
+
+        #clockHand{
+            width: 1%;
+            height: 45%;
+            left: 49.5%;
+            position: absolute;
+            top: 14%;
+            transform-origin: 50% 80%;
+            background: #000;
+        }
+    </style>
 </head>
 <body>
-      <!--
-        Создайте счетчик секунд, который начинает отчет с 1 и заканчивается на 30,
-        также добавьте кнопки который останавливают отчет, и запускают его заново и добавьте кнопку обнуляющую отчет.
-        Также попробуйте изменить код так чтобы отчет начиналься с 30 и заканчивалься на 1.
+<!--
+  Создайте счетчик секунд, который начинает отчет с 1 и заканчивается на 30,
+  также добавьте кнопки который останавливают отчет, и запускают его заново и добавьте кнопку обнуляющую отчет.
+  Также попробуйте изменить код так чтобы отчет начиналься с 30 и заканчивалься на 1.
 
-       + бонус: Сделать так что бы на каждый тик (1с/2c) менялся цвет фона. Можно на основе генератора случайного цвета с предудущих уроков.
-       + бонус: Сделать визуализацию стрелки которая идет по кругу
-            document.getElementById("myDIV").style.transform = "rotate(7deg)";
+ + бонус: Сделать так что бы на каждый тик (1с/2c) менялся цвет фона. Можно на основе генератора случайного цвета с предудущих уроков.
+ + бонус: Сделать визуализацию стрелки которая идет по кругу
+      document.getElementById("myDIV").style.transform = "rotate(7deg)";
 
-       + бонус: Сделать кнопки которые выбирают режим в котором идет отсчет - обычный от 0 до 30 или реверсивный от 30 до 0
-      -->
-      <script>
+ + бонус: Сделать кнопки которые выбирают режим в котором идет отсчет - обычный от 0 до 30 или реверсивный от 30 до 0
+-->
+<div class="wrapper">
+    <div class="timer-container">
+        <div id="clockHand"></div>
+    </div>
+    <span id="timer"></span>
+    <button id="pauseBtn">pause</button>
+    <button id="continueBtn">continue</button>
+    <button id="resetBtn">reset</button>
+    <button id="directionSwitcher">switch direction</button>
+</div>
 
-      </script>
+<script>
+    let direction = true;
+    let counter = 0;
+    let timerBlock = document.getElementById('timer');
+
+    function getRandomIntInclusive(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    const startTimer = () => {
+        counter += direction ? 1 : -1;
+        document.body.style.background = `rgb(${getRandomIntInclusive(0, 255)}, ${getRandomIntInclusive(0, 255)}, ${getRandomIntInclusive(0, 255)})`;
+        document.getElementById("clockHand").style.transform = `rotate(${counter * 7}deg)`;
+        timerBlock.innerText = counter;
+
+        if(counter == 30 || counter == 0) {
+            direction = !direction;
+        }
+    }
+
+    let timer = setInterval(startTimer, 1000);
+
+    const pauseBtn = document.getElementById('pauseBtn');
+    const continueBtn = document.getElementById('continueBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const switchBtn = document.getElementById('directionSwitcher');
+
+
+    pauseBtn.addEventListener('click', () => {
+        clearInterval(timer);
+    });
+
+    continueBtn.addEventListener('click', () => {
+        timer = setInterval(startTimer, 1000);
+    });
+
+    resetBtn.addEventListener('click', () => {
+        counter = 0;
+    });
+
+    switchBtn.addEventListener('click', () => {
+        direction = !direction;
+    });
+
+</script>
 </body>
 </html>
