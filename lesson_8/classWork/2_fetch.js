@@ -2,10 +2,32 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch('http://www.json-generator.com/api/json/get/cgwbLkTxnS?indent=2')
         .then((res) => {
             return res.json()
-        }).then((res1) =>{
-           console.log(res1);
-        let item = res1[Math.floor(Math.random()*res1.length)];
-        console.log(item)
+        }).then((human) =>{
+        let user = human[Math.floor(Math.random()*human.length)];
+        console.log(user);
+        return fetch('http://www.json-generator.com/api/json/get/bTBBXQabKG?indent=2')
+            .then((res) => {
+                return res.json();
+            }).then((friends) => {
+                console.log(friends);
+                let humanArr = {};
+                humanArr.name = user.name;
+                humanArr.friends = friends[0].friends;
+                console.log(humanArr)
+
+                let html = `
+                                <div>${user.name}</div>
+                                <br>
+                                <br>
+                                <div>Friends</div>
+                                <ul>
+                                ${humanArr.friends.map((friend) => {
+                                    return `<li>${friend.name}</li>`;
+                                }).join('')}
+                                </ul>
+                            `;
+                document.getElementById('app').innerHTML = html;
+            })
     })
 })
 
