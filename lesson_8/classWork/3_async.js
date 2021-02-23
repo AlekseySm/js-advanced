@@ -16,3 +16,33 @@
     Данные о дате регистрации и адресс скрывать при выводе и показывать при клике.
 
 */
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('initial script');
+
+
+    async function companyList () {
+        const getCompanyResponse = await fetch("http://www.json-generator.com/api/json/get/ceRHciXcVu?indent=2")
+        const companys = await getCompanyResponse.json();
+        console.log('main company', companys);
+
+        let html = `    
+                    <div>
+                        ${companys.map((company) => {
+                            return `
+                                    <div class="company">${company.company}</div>
+                                    <div class="balance">${company.balance}</div>
+                                    <div class="registered">${company.registered}</div>
+                                    <div class="address">${Object.values(company.address)}</div>
+                                `;
+                        }).join('')}
+                    </div>
+                `;
+        return html;
+    }
+
+    let companyListResult = companyList();
+    companyListResult.then( (data) => {
+        //console.log('Final Person:', data);
+        document.getElementById('app').innerHTML = data;
+    });
+});
