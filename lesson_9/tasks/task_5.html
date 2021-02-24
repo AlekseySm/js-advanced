@@ -1,0 +1,44 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task 5</title>
+    <style>
+        .done{
+            text-decoration: line-through;
+        }
+        .textInput{
+            box-sizing: border-box;
+            padding: 10px 20px;
+        }
+        .addButton{
+            box-sizing: border-box;
+            padding: 10px 20px;
+            background: #ffcc00;
+        }
+
+        .DoneCheckbox,
+        .TodoText{
+            margin-right: 5px;
+        }
+
+        button{
+            background: red;
+            color: #fff;
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+<main>
+    <div id="app">
+        <input id="newToDo" class="textInput"/>
+        <input id="AddToDo" class="addButton" type="button" value="Add"/>
+        <ul id="toDoList"></ul>
+    </div>
+</main>
+<script src="task_5.js"></script>
+</body>
+</html>

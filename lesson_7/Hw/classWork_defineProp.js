@@ -25,23 +25,36 @@
     - бонус, создать конструктор суперспособностей -> new Spell( name, spellFunc );
 */
 
-  class SuperDude {
-    
-  }
+class SuperDude {
+    constructor(name, powers) {
+        this.name = name;
+        this.powers = powers;
 
-  let superPowers = [
+        Object.defineProperty(this, 'name', {
+            value: this.name
+        });
+
+        this.powers.forEach( item => {
+            Object.defineProperty(this, item.name, {
+                value: () => console.log(item.spell())
+            })
+        })
+    }
+}
+
+let superPowers = [
     { name:'Invisibility', spell: function(){ return `${this.name} hide from you`} },
     { name:'superSpeed', spell: function(){ return `${this.name} running from you`} },
     { name:'superSight', spell: function(){ return `${this.name} see you`} },
     { name:'superFroze', spell: function(){ return `${this.name} will froze you`} },
     { name:'superSkin',  spell: function(){ return `${this.name} skin is unbreakable`} },
-  ];
+];
 
-  let Luther = new Dude('Luther', superPowers);
-      // Тестирование: Методы должны работать и выводить сообщение.
-      Luther.superSight();
-      Luther.superSpeed();
-      Luther.superFroze();
-      Luther.Invisibility();
-      Luther.superSkin();
+var Luther = new SuperDude('test', superPowers);
 
+//     // Тестирование: Методы должны работать и выводить сообщение.
+Luther.superSight();
+Luther.superSpeed();
+Luther.superFroze();
+Luther.Invisibility();
+Luther.superSkin();
