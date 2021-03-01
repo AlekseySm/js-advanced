@@ -6,6 +6,55 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+<style>
+    body > div {
+      width: 100%;
+      max-width: 1600px;
+      margin: 40px auto;
+    }
+    body > div > div {
+      width: 100%;
+      display: flex;
+      /*align-items: center;*/
+      height: 40px;
+
+    }
+
+    body > div > div > div {
+      text-align: center;
+      width: 15%;
+      border: 1px solid #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    body > div > div > div:last-child {
+      text-align: center;
+      width: 47%;
+    }
+    body > div > div > div:first-child {
+      text-align: center;
+      width: 8%;
+    }
+    .header > div {
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 25px;
+    }
+    .address span {
+      display: none;
+    }
+    .address span {
+      display: none;
+    }
+    .address span.show {
+      display: inline-block;
+    }
+
+    button {
+      margin: 0 15px;
+    }
+</style>
 <body>
     <!-- 
     1. При помощи fetch получить данные:
@@ -17,5 +66,55 @@
 
     4. создать кнопу которая скрывает показывает address
      -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            async function companyList() {
+                const getCompanyResponse = await fetch('http://www.json-generator.com/api/json/get/cgwbLkTxnS?indent=2');
+                const companys = await getCompanyResponse.json();
+                console.log('companys list', companys);
+
+                let html = `
+                    ${companys.map((company, i) => {
+                        console.log('single company',company)
+                    return `
+                        <div>
+                            <div class="index">${i}</div>
+                            <div class="company">${company.company}</div>
+                            <div class="email">${company.email}</div>
+                            <div class="phone">${company.phone}</div>
+                            <div class="address">
+                                <span>${company.address}</span>
+                                <button>Show/hide address</button>
+                            </div>
+                        </div>
+                    `;}).join('')}
+                `;
+                return html;
+            }
+            let companyListResult = companyList();
+            companyListResult.then((data) => {
+                let header = `
+                    <div class="header">
+                        <div class="index">index</div>
+                        <div class="company">company</div>
+                        <div class="email">email</div>
+                        <div class="phone">phone</div>
+                        <div class="address">address</div>
+                    </div>
+                    `;
+                let app = document.createElement('div');
+                app.innerHTML = header;
+                app.querySelector('.header').insertAdjacentHTML( 'afterEnd',data);
+                document.body.append(app);
+
+                document.querySelectorAll('button').forEach((item)=> {
+                    item.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        item.previousElementSibling.classList.toggle('show');
+                    })
+                })
+            })
+        })
+    </script>
 </body>
 </html>
